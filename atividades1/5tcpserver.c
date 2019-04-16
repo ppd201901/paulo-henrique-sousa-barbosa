@@ -22,7 +22,7 @@
 
 
   /**********************************/ 
-  /* build server address structure */
+  /* estrutura de conexão */
   /**********************************/ 
 
   bzero((char *)&servAddr, sizeof(servAddr));
@@ -31,14 +31,14 @@
   servAddr.sin_port = htons(SERVER_PORT);
 
   /************************/ 
-  /* create stream socket */
+  /* criando sockets */
   /************************/ 
 
   sd = socket(AF_INET, SOCK_STREAM, 0);
   printf("Socket criado com sucesso. \n");
 
   /**************************/ 
-  /* bind local port number */
+  /* vinculando portas */
   /**************************/ 
 
   bind(sd, (struct sockaddr *) &servAddr, sizeof(servAddr));
@@ -46,8 +46,8 @@
 
 
   /********************************/ 
-  /* specify number of concurrent */
-  /* clients to listen for        */
+  /* numero de clientes que podem */
+  /* se conectar..........        */
   /********************************/ 
 
   listen(sd,5);
@@ -58,7 +58,7 @@
     printf("Esperando o cliente conectar na porta TCP %u\n",SERVER_PORT);
 
     /*****************************/
-    /* wait for client connection*/
+    /* esperando cliente....     */
     /*****************************/   
 
     cliLen = sizeof(cliAddr);
@@ -68,7 +68,7 @@
                  inet_ntoa(cliAddr.sin_addr), ntohs(cliAddr.sin_port));
 
     /*****************************/
-    /* wait for data from client */
+    /* esperando dados do cliente*/
     /*****************************/     
 
     do{
@@ -113,7 +113,7 @@
 
 
     /**************************/
-    /* close client connection*/
+    /* fechando conexão.......*/
     /**************************/   
 
     printf("conexão terminada com host [IP %s ,TCP port %d]\n",
