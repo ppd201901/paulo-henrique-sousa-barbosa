@@ -21,7 +21,7 @@ main () {
  char line[MAX_MSG];
 
 /**********************************/
- /* build server address structure */
+ /* estrutura de acessos */
  /**********************************/
 
 bzero((char *)&servAddr, sizeof(servAddr));
@@ -35,28 +35,28 @@ bzero((char *)&clientAddr, sizeof(clientAddr));
  clientAddr.sin_port = htons(0);
 
 /************************/
- /* create stream socket */
+ /* criando sockets */
  /************************/
 
 sd = socket(AF_INET, SOCK_STREAM, 0);
  printf("Socket criado com sucesso. \n");
 
 /**************************/
- /* bind local port number */
+ /* vinculando portas */
  /**************************/
 
 bind(sd, (struct sockaddr *) &clientAddr, sizeof(clientAddr));
  printf("Porta ok. \n");
 
 /*********************/
- /* connect to server */
+ /* conectando ao servidor */
  /*********************/
 
 connect(sd, (struct sockaddr *) &servAddr, sizeof(servAddr));
  printf("Conectado com o Servidor! \n");
 
 /***********************/
- /* send data to server */
+ /* enviando dados */
  /***********************/
 
 do{
